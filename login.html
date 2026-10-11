@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Cyber Shield</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Cyber Shield</h1>
+        <p>Cyber Safety & Awareness Platform</p>
+    </header>
+
+    <!-- Login Section -->
+    <main>
+
+        <section class="auth-section">
+
+            <div class="auth-box">
+
+                <h2>🔐 Login</h2>
+
+                <p>
+                    Login to access your Cyber Shield account.
+                </p>
+
+                <form id="loginForm">
+
+                    <label for="loginEmail">Email</label>
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter your email"
+                        required>
+
+                    <label for="loginPassword">Password</label>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required>
+
+                    <button type="submit">
+                        Login
+                    </button>
+
+                </form>
+
+                <p id="loginMessage"></p>
+
+                <p class="auth-link">
+                    Don't have an account?
+                    <a href="signup.html">Create an account</a>
+                </p>
+
+                <p class="back-home">
+                    <a href="index.html">← Back to Home</a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Cyber Shield | Cyber Safety Awareness Project</p>
+    </footer>
+<script src="login.js"></script>
+</body>
+
+</html>

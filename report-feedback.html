@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report / Feedback - Cyber Shield</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Cyber Shield</h1>
+        <p>Report a Cyber Incident or Share Your Feedback</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cyber-threats.html">Cyber Threats</a>
+        <a href="safety-guide.html">Safety Guide</a>
+        <a href="scam-checker.html">Scam Checker</a>
+        <a href="what-to-do.html">What To Do?</a>
+        <a href="cyber-quiz.html">Cyber Quiz</a>
+        <a href="report-feedback.html">Report / Feedback</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <section>
+            <h2>📝 Report / Feedback</h2>
+
+            <p>
+                Help us improve Cyber Shield by reporting a cyber
+                incident or sharing your valuable feedback.
+            </p>
+
+            <div class="auth-box">
+
+                <form id="reportForm">
+
+                    <label for="reportName">Name</label>
+                    <input
+                        type="text"
+                        id="reportName"
+                        placeholder="Enter your name"
+                        required>
+
+                    <label for="reportEmail">Email</label>
+                    <input
+                        type="email"
+                        id="reportEmail"
+                        placeholder="Enter your email"
+                        required>
+
+                    <label for="reportType">Report Type</label>
+                    <select id="reportType" required>
+                        <option value="">Select an option</option>
+                        <option value="Scam">Scam</option>
+                        <option value="Phishing">Phishing</option>
+                        <option value="Account Security">Account Security</option>
+                        <option value="Cyber Incident">Other Cyber Incident</option>
+                        <option value="Feedback">Website Feedback</option>
+                    </select>
+
+                    <label for="reportMessage">Describe the Issue</label>
+                    <textarea
+                        id="reportMessage"
+                        rows="7"
+                        placeholder="Describe the incident or write your feedback..."
+                        required></textarea>
+
+                    <button type="submit">
+                        Submit Report
+                    </button>
+
+                </form>
+
+                <p id="reportMessageBox"></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Cyber Shield | Cyber Safety Awareness Project</p>
+    </footer>
+    
+<script src="report-feedback.js"></script>
+</body>
+
+</html>

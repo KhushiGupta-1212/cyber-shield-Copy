@@ -1,0 +1,302 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Whole Website */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
+
+/* Header */
+header {
+    background: #0b1f3a;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+/* Navigation */
+nav {
+    background: #12345b;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+nav a:hover {
+    background: #1e5a91;
+    border-radius: 5px;
+}
+
+/* Main Section */
+main {
+    min-height: 70vh;
+}
+
+section {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+section h2 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 18px;
+    max-width: 650px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+/* Button */
+button {
+    background: #e63946;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #c92f3b;
+}
+
+/* Footer */
+footer {
+    background: #0b1f3a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+/* Feature Cards */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 20px 30px 60px;
+}
+.card {
+    background: white;
+    width: 260px;
+    padding: 30px 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.safety-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 40px 30px 70px;
+}
+/* Cyber Quiz */
+
+.quiz-box {
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+    text-align: left;
+}
+
+.question {
+    margin-bottom: 30px;
+    padding: 25px;
+    background: #f8fafc;
+    border: 1px solid #e1e7ef;
+    border-radius: 12px;
+}
+
+.question h3 {
+    font-size: 19px;
+    margin-bottom: 18px;
+    color: #0b1f3a;
+}
+
+.question label {
+    display: block;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: white;
+    border: 1px solid #d9e0e8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.question label:hover {
+    background: #eef5fb;
+    border-color: #1e5a91;
+}
+
+.question input {
+    margin-right: 10px;
+}
+
+#submitQuiz {
+    display: block;
+    margin: 10px auto 0;
+    padding: 14px 35px;
+}
+
+#quizResult {
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+/* Report / Feedback Form */
+
+#reportForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#reportForm label {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+#reportForm input,
+#reportForm select,
+#reportForm textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9e0e8;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+#reportForm textarea {
+    resize: vertical;
+}
+
+#reportForm button {
+    margin-top: 15px;
+}
+/* Login & Sign Up Forms */
+
+.auth-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-box form label {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.auth-box form input,
+.auth-box form select,
+.auth-box form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9e0e8;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.auth-box form button {
+    margin-top: 15px;
+}
+/* Compact Login Form */
+
+.auth-section .auth-box {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+#loginForm {
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+#loginForm input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+}
+
+#loginForm button {
+    width: auto;
+    align-self: center;
+    padding: 10px 28px;
+    margin-top: 12px;
+}
+/* Compact Report / Feedback Form */
+
+#reportForm {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#reportForm input,
+#reportForm select,
+#reportForm textarea {
+    padding: 10px 12px;
+    font-size: 15px;
+}
+
+#reportForm button {
+    width: auto;
+    align-self: center;
+    padding: 10px 28px;
+    margin-top: 12px;
+}

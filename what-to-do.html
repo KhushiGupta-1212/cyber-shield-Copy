@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>What To Do? - Cyber Shield</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Cyber Shield</h1>
+        <p>What To Do During a Cyber Incident</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cyber-threats.html">Cyber Threats</a>
+        <a href="safety-guide.html">Safety Guide</a>
+        <a href="scam-checker.html">Scam Checker</a>
+        <a href="what-to-do.html">What To Do?</a>
+        <a href="#">Cyber Quiz</a>
+        <a href="#">Report / Feedback</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <section>
+            <h2>🚨 What To Do?</h2>
+
+            <p>
+                If you face a cyber incident, stay calm and follow the
+                appropriate safety steps below.
+            </p>
+        </section>
+
+        <!-- Emergency Cyber Help -->
+        <section class="features">
+
+            <div class="card">
+                <h3>🔐 Account Hacked</h3>
+
+                <p>
+                    Change your password immediately and enable
+                    two-factor authentication.
+                </p>
+
+                <button onclick="showSteps('account')">
+                    View Steps
+                </button>
+
+                <div id="account" class="steps"></div>
+            </div>
+
+
+            <div class="card">
+                <h3>💳 Online Payment Fraud</h3>
+
+                <p>
+                    If you notice an unauthorized transaction,
+                    contact your bank or payment service immediately.
+                </p>
+
+                <button onclick="showSteps('payment')">
+                    View Steps
+                </button>
+
+                <div id="payment" class="steps"></div>
+            </div>
+
+
+            <div class="card">
+                <h3>🎣 Phishing Link Clicked</h3>
+
+                <p>
+                    If you clicked a suspicious link, avoid entering
+                    sensitive information and secure your accounts.
+                </p>
+
+                <button onclick="showSteps('phishing')">
+                    View Steps
+                </button>
+
+                <div id="phishing" class="steps"></div>
+            </div>
+
+
+            <div class="card">
+                <h3>📱 Phone Lost</h3>
+
+                <p>
+                    Secure your accounts and contact your mobile
+                    service provider if your phone is lost.
+                </p>
+
+                <button onclick="showSteps('phone')">
+                    View Steps
+                </button>
+
+                <div id="phone" class="steps"></div>
+            </div>
+
+
+            <div class="card">
+                <h3>🪪 Personal Information Misused</h3>
+
+                <p>
+                    Secure affected accounts and report suspicious
+                    activity through appropriate official channels.
+                </p>
+
+                <button onclick="showSteps('identity')">
+                    View Steps
+                </button>
+
+                <div id="identity" class="steps"></div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Cyber Shield | Cyber Safety Awareness Project</p>
+    </footer>
+
+    <script src="what-to-do.js"></script>
+
+</body>
+
+</html>
