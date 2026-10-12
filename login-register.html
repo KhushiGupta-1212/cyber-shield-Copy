@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration | Cyber Shield</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #071426, #123b60, #071426);
+            color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            padding: 30px;
+            border: 1px solid #315574;
+            border-radius: 18px;
+            background: #10263c;
+            box-shadow: 0 12px 35px #0005;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            text-align: center;
+            color: #50d5ff;
+        }
+
+        .subtitle {
+            margin-bottom: 25px;
+            text-align: center;
+            color: #c5d5e4;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .tabs button {
+            width: 50%;
+            padding: 12px;
+            border: 1px solid #50d5ff;
+            border-radius: 8px;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .tabs button.active {
+            background: #50d5ff;
+            color: #071426;
+            font-weight: bold;
+        }
+
+        .form {
+            display: none;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        label {
+            display: block;
+            margin: 14px 0 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #47647d;
+            border-radius: 8px;
+            background: #071a2b;
+            color: white;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #50d5ff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #50d5ff;
+            color: #071426;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            color: #a9e9ff;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 22px;
+            text-align: center;
+            color: #50d5ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <h1>Cyber Shield</h1>
+        <p class="subtitle">Your safety in the digital world</p>
+
+        <div class="tabs">
+            <button type="button" id="loginTab" class="active"
+                onclick="showForm('login')">Login</button>
+
+            <button type="button" id="registerTab"
+                onclick="showForm('register')">Registration</button>
+        </div>
+
+        <form id="loginForm" class="form active">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" required
+                placeholder="Enter your email">
+
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" required
+                placeholder="Enter your password">
+
+            <button class="submit-btn" type="submit">Login</button>
+        </form>
+
+        <form id="registerForm" class="form">
+            <label for="registerName">Full Name</label>
+            <input type="text" id="registerName" required
+                placeholder="Enter your full name">
+
+            <label for="registerEmail">Email Address</label>
+            <input type="email" id="registerEmail" required
+                placeholder="Enter your email">
+
+            <label for="registerPassword">Create Password</label>
+            <input type="password" id="registerPassword" required
+                minlength="8" placeholder="At least 8 characters">
+
+            <button class="submit-btn" type="submit">
+                Create Account
+            </button>
+        </form>
+
+        <p id="message" class="message" aria-live="polite"></p>
+
+        <a class="back-link" href="index.html">← Back to Home</a>
+    </main>
+
+    <script>
+        function showForm(type) {
+            const isLogin = type === "login";
+
+            document.getElementById("loginForm").classList.toggle(
+                "active", isLogin
+            );
+            document.getElementById("registerForm").classList.toggle(
+                "active", !isLogin
+            );
+            document.getElementById("loginTab").classList.toggle(
+                "active", isLogin
+            );
+            document.getElementById("registerTab").classList.toggle(
+                "active", !isLogin
+            );
+
+            document.getElementById("message").textContent = "";
+        }
+            
+    </script>
+<script src="login-register.js"></script>
+</body>
+</html>
