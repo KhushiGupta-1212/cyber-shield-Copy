@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,63 +6,397 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Scam Checker - Cyber Shield</title>
+    <title>Scam Checker | Cyber Shield</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .sc-page {
+            min-height: 100vh;
+            color: #eaf2ff;
+            background: #081225;
+            padding-bottom: 35px;
+        }
+
+        .sc-page header {
+            padding: 30px 16px;
+            text-align: center;
+            background: linear-gradient(135deg, #102b55, #075985);
+            border-bottom: 1px solid #24466f;
+        }
+
+        .sc-page header h1 {
+            margin: 0 0 8px;
+            font-size: clamp(28px, 5vw, 40px);
+            color: #ffffff;
+        }
+
+        .sc-page header p {
+            margin: 0;
+            color: #dbeafe;
+        }
+
+        .sc-page nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            background: #0d1b32;
+            border-bottom: 1px solid #223653;
+        }
+
+        .sc-page nav a {
+            color: #dbeafe;
+            text-decoration: none;
+            padding: 9px 12px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sc-page nav a:hover,
+        .sc-page nav a:focus-visible {
+            background: #164e80;
+            color: #ffffff;
+        }
+
+        .sc-container {
+            width: min(100% - 32px, 1000px);
+            margin: 0 auto;
+        }
+
+        .sc-hero {
+            text-align: center;
+            padding: 48px 12px 30px;
+        }
+
+        .sc-badge {
+            display: inline-block;
+            padding: 7px 13px;
+            border: 1px solid #285b87;
+            border-radius: 30px;
+            background: #102b49;
+            color: #93c5fd;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .sc-hero h2 {
+            margin: 18px 0 12px;
+            font-size: clamp(27px, 5vw, 42px);
+            color: #ffffff;
+        }
+
+        .sc-hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #b9c8df;
+            line-height: 1.8;
+        }
+
+        .sc-panel {
+            padding: clamp(20px, 4vw, 32px);
+            background: #101f37;
+            border: 1px solid #29415f;
+            border-radius: 20px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+        }
+
+        .sc-panel h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 23px;
+        }
+
+        .sc-help {
+            color: #b9c8df;
+            line-height: 1.7;
+        }
+
+        .sc-label {
+            display: block;
+            margin: 22px 0 10px;
+            color: #eaf2ff;
+            font-weight: 600;
+        }
+
+        .sc-page #messageInput {
+            display: block;
+            width: 100%;
+            min-height: 190px;
+            box-sizing: border-box;
+            resize: vertical;
+            padding: 16px;
+            border: 1px solid #385577;
+            border-radius: 12px;
+            background: #09162a;
+            color: #f1f5f9;
+            font: inherit;
+            line-height: 1.6;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .sc-page #messageInput::placeholder {
+            color: #879bb6;
+        }
+
+        .sc-page #messageInput:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+        }
+
+        .sc-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .sc-page #checkScamBtn {
+            padding: 13px 23px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .sc-page #checkScamBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(37, 99, 235, 0.3);
+        }
+
+        .sc-page #checkScamBtn:focus-visible {
+            outline: 3px solid #7dd3fc;
+            outline-offset: 3px;
+        }
+
+        .sc-privacy {
+            margin: 0;
+            color: #9fb2cc;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .sc-page #resultBox:not(:empty) {
+            margin-top: 22px;
+            padding: 18px;
+            border: 1px solid #385577;
+            border-radius: 12px;
+            background: #0a172a;
+            color: #eaf2ff;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .sc-signs {
+            margin-top: 34px;
+        }
+
+        .sc-signs h3 {
+            text-align: center;
+            color: #ffffff;
+            font-size: 25px;
+        }
+
+        .sc-sign-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .sc-sign-card {
+            padding: 20px;
+            border: 1px solid #263e5d;
+            border-radius: 14px;
+            background: #101f37;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .sc-sign-card:hover {
+            transform: translateY(-4px);
+            border-color: #38bdf8;
+        }
+
+        .sc-sign-card .sc-icon {
+            font-size: 27px;
+        }
+
+        .sc-sign-card h4 {
+            margin: 12px 0 8px;
+            color: #bfdbfe;
+        }
+
+        .sc-sign-card p {
+            margin: 0;
+            color: #b9c8df;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .sc-note {
+            margin-top: 22px;
+            padding: 17px 19px;
+            border-left: 4px solid #fbbf24;
+            border-radius: 8px;
+            background: #292515;
+            color: #fef3c7;
+            line-height: 1.7;
+        }
+
+        .sc-page footer {
+            margin-top: 42px;
+            padding: 22px 16px;
+            border-top: 1px solid #223653;
+            text-align: center;
+            color: #9fb2cc;
+        }
+
+        @media (max-width: 700px) {
+            .sc-sign-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sc-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .sc-page #checkScamBtn {
+                width: 100%;
+            }
+
+            .sc-page nav a {
+                padding: 8px 9px;
+                font-size: 14px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sc-page *,
+            .sc-page *::before,
+            .sc-page *::after {
+                transition: none !important;
+                animation: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="sc-page">
 
-    <!-- Header -->
     <header>
-        <h1>Cyber Shield</h1>
-        <p>Check Suspicious Messages Before You Trust Them</p>
+        <h1>🛡️ Cyber Shield</h1>
+        <p>Think Before You Click. Stay Safe Online.</p>
     </header>
 
-    <!-- Navigation -->
-    <nav>
+    <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="cyber-threats.html">Cyber Threats</a>
         <a href="safety-guide.html">Safety Guide</a>
-        <a href="scam-checker.html">Scam Checker</a>
-        <a href="#">What To Do?</a>
-        <a href="#">Cyber Quiz</a>
-        <a href="#">Report / Feedback</a>
+        <a href="scam-checker.html" aria-current="page">Scam Checker</a>
+        <a href="what-to-do.html">What To Do?</a>
+        <a href="cyber-quiz.html">Cyber Quiz</a>
+        <a href="report-feedback.html">Report / Feedback</a>
     </nav>
 
-    <!-- Main Content -->
-    <main>
+    <main class="sc-container">
 
-        <section>
-            <h2>🚨 Scam Checker</h2>
-
+        <section class="sc-hero">
+            <span class="sc-badge">SMARTER DIGITAL SAFETY</span>
+            <h2>🚨 Scam Message Checker</h2>
             <p>
-                Received a suspicious message, email or online offer?
-                Paste it below and Cyber Shield will check for common
-                warning signs.
+                Not sure whether a message is genuine? Check it for common
+                scam warning signs before you reply, share information,
+                or click a link.
+            </p>
+        </section>
+
+        <section class="sc-panel" aria-labelledby="checkerHeading">
+            <h3 id="checkerHeading">🔍 Check a Suspicious Message</h3>
+
+            <p class="sc-help">
+                Paste the message, email text, or online offer below.
+                Cyber Shield will look for selected warning signs.
             </p>
 
-            <div class="checker-box">
+            <label class="sc-label" for="messageInput">
+                Suspicious message
+            </label>
 
-                <textarea
-                    id="messageInput"
-                    placeholder="Paste the suspicious message here..."
-                    rows="8"></textarea>
+            <textarea
+                id="messageInput"
+                placeholder="Example: Congratulations! You have won a prize. Click here to claim it..."
+                rows="8"></textarea>
 
-                <br><br>
-
-                <button id="checkScamBtn">
-                    Check Message
+            <div class="sc-actions">
+                <button id="checkScamBtn" type="button">
+                    🔎 Check for Scams
                 </button>
 
-                <div id="resultBox"></div>
+                <p class="sc-privacy">
+                    Safety tip: Never paste passwords, OTPs, bank details,
+                    or other private information into this checker.
+                </p>
+            </div>
+
+            <div id="resultBox" aria-live="polite" role="status"></div>
+        </section>
+
+        <section class="sc-signs" aria-labelledby="warningSignsHeading">
+            <h3 id="warningSignsHeading">⚠️ Warning Signs to Watch For</h3>
+
+            <div class="sc-sign-grid">
+
+                <article class="sc-sign-card">
+                    <span class="sc-icon" aria-hidden="true">⏰</span>
+                    <h4>Urgent Pressure</h4>
+                    <p>
+                        Messages demanding immediate action or threatening
+                        account suspension may be trying to stop you from
+                        thinking carefully.
+                    </p>
+                </article>
+
+                <article class="sc-sign-card">
+                    <span class="sc-icon" aria-hidden="true">🎁</span>
+                    <h4>Unrealistic Rewards</h4>
+                    <p>
+                        Unexpected prizes, lottery winnings, or guaranteed
+                        rewards can be used to trick people into sharing
+                        information or paying fees.
+                    </p>
+                </article>
+
+                <article class="sc-sign-card">
+                    <span class="sc-icon" aria-hidden="true">🔗</span>
+                    <h4>Suspicious Links</h4>
+                    <p>
+                        Unexpected links may lead to fake websites designed
+                        to collect login details or financial information.
+                    </p>
+                </article>
 
             </div>
 
+            <div class="sc-note">
+                <strong>Remember:</strong> This checker looks for selected
+                warning signs. A suspicious result does not prove a scam,
+                and a safe-looking result does not prove a message is genuine.
+                Verify important messages using the organisation's official
+                website or contact details you find independently.
+            </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>© 2026 Cyber Shield | Cyber Safety Awareness Project</p>
     </footer>
@@ -69,5 +404,5 @@
     <script src="scam-checker.js"></script>
 
 </body>
-
 </html>
+```
