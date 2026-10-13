@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IP Checker | Cyber Shield</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #071426, #123b60);
+            color: #ffffff;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #315574;
+        }
+
+        header h1 {
+            color: #50d5ff;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #c5d5e4;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            padding: 15px;
+            background: #10263c;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #50d5ff;
+        }
+
+        main {
+            width: 92%;
+            max-width: 850px;
+            margin: 35px auto;
+        }
+
+        .card {
+            padding: 25px;
+            margin-bottom: 22px;
+            border: 1px solid #315574;
+            border-radius: 15px;
+            background: #10263c;
+            box-shadow: 0 10px 25px #0003;
+        }
+
+        h2 {
+            color: #50d5ff;
+            margin-top: 0;
+        }
+
+        .description {
+            color: #c5d5e4;
+            line-height: 1.6;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 12px 0;
+            border: 1px solid #47647d;
+            border-radius: 8px;
+            background: #071a2b;
+            color: white;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: 2px solid #50d5ff;
+        }
+
+        button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #50d5ff;
+            color: #071426;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #a0eaff;
+        }
+
+        .result {
+            margin-top: 18px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .note {
+            color: #c5d5e4;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            color: #c5d5e4;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🛡️ Cyber Shield</h1>
+        <p>IP Address Checker & Network Information</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cyber-threats.html">Cyber Threats</a>
+        <a href="safety-guide.html">Safety Guide</a>
+        <a href="scam-checker.html">Scam Checker</a>
+        <a href="what-to-do.html">What To Do?</a>
+        <a href="cyber-quiz.html">Cyber Quiz</a>
+    </nav>
+
+    <main>
+        <section class="card">
+            <h2>🌐 My Public IP</h2>
+            <p class="description">
+                Find the public IP address visible to an external
+                internet service.
+            </p>
+
+            <button type="button" id="myIpBtn">
+                Find My Public IP
+            </button>
+
+            <div id="myIpResult" class="result"
+                 aria-live="polite"></div>
+        </section>
+
+        <section class="card">
+            <h2>🔎 IP Address Lookup</h2>
+            <p class="description">
+                Enter an IP address to check its format and view
+                available public network information.
+            </p>
+
+            <form id="lookupForm">
+                <label for="ipInput">Enter IPv4 or IPv6 address</label>
+
+                <input
+                    type="text"
+                    id="ipInput"
+                    placeholder="Example: 8.8.8.8"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">Validate & Check IP</button>
+            </form>
+
+            <div id="lookupResult" class="result"
+                 aria-live="polite"></div>
+        </section>
+
+        <section class="card">
+            <h2>ℹ️ Stay Safe</h2>
+            <p class="description">
+                An IP address alone does not reliably identify a
+                person or reveal their exact home address.
+                IP-based location results are approximate and may
+                be inaccurate.
+            </p>
+            <p class="note">
+                Public IP information may be processed by an
+                external lookup provider. Avoid entering private
+                information into this tool.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        Cyber Shield | Cybersecurity Awareness Project
+    </footer>
+
+    <script src="ip-checker.js"></script>
+</body>
+</html>
