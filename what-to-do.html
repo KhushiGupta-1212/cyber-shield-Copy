@@ -1,134 +1,340 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn what to do during common cyber incidents with Cyber Shield's step-by-step safety guidance.">
 
     <title>What To Do? - Cyber Shield</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* What To Do page styles only */
+        .wtd-page {
+            --wtd-bg: #07111f;
+            --wtd-card: #101f33;
+            --wtd-blue: #38bdf8;
+            --wtd-text: #e5edf8;
+            --wtd-muted: #a8b8cc;
+            background: var(--wtd-bg);
+            color: var(--wtd-text);
+            min-height: 100vh;
+            padding-bottom: 30px;
+        }
+
+        .wtd-page header {
+            background: linear-gradient(135deg, #07111f, #12345a);
+            padding: 38px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+        }
+
+        .wtd-page header h1 {
+            color: #ffffff;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin: 0 0 10px;
+        }
+
+        .wtd-page header p {
+            color: #b9d8f5;
+            margin: 0;
+        }
+
+        .wtd-page nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 15px;
+            background: #0b1728;
+            border-bottom: 1px solid #20344d;
+        }
+
+        .wtd-page nav a {
+            color: #dceafa;
+            text-decoration: none;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: background 0.25s ease, color 0.25s ease;
+        }
+
+        .wtd-page nav a:hover,
+        .wtd-page nav a[aria-current="page"] {
+            color: #ffffff;
+            background: #16456c;
+        }
+
+        .wtd-page main {
+            width: min(1150px, 92%);
+            margin: 0 auto;
+        }
+
+        .wtd-page .wtd-hero {
+            text-align: center;
+            padding: 52px 15px 35px;
+        }
+
+        .wtd-page .wtd-tag {
+            display: inline-block;
+            color: #7dd3fc;
+            background: rgba(56, 189, 248, 0.10);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 30px;
+            padding: 7px 14px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .wtd-page .wtd-hero h2 {
+            color: #ffffff;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin: 0 0 14px;
+        }
+
+        .wtd-page .wtd-hero p {
+            color: var(--wtd-muted);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .wtd-page .wtd-notice {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            padding: 17px 20px;
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 12px;
+            color: #fce7b2;
+            line-height: 1.7;
+        }
+
+        .wtd-page .wtd-notice strong {
+            color: #fde68a;
+        }
+
+        .wtd-page .wtd-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 22px;
+            padding: 10px 0 45px;
+        }
+
+        .wtd-page .wtd-card {
+            background: linear-gradient(145deg, #12243a, #0d1a2c);
+            border: 1px solid #263d58;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+            transition: transform 0.25s ease, border-color 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        .wtd-page .wtd-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--wtd-blue);
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.12);
+        }
+
+        .wtd-page .wtd-icon {
+            font-size: 34px;
+            margin-bottom: 14px;
+        }
+
+        .wtd-page .wtd-card h3 {
+            color: #ffffff;
+            font-size: 21px;
+            margin: 0 0 12px;
+        }
+
+        .wtd-page .wtd-card > p {
+            color: var(--wtd-muted);
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+
+        .wtd-page .wtd-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: #ffffff;
+            border: none;
+            border-radius: 9px;
+            padding: 11px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: filter 0.2s ease, transform 0.2s ease;
+        }
+
+        .wtd-page .wtd-button:hover {
+            filter: brightness(1.15);
+            transform: translateY(-1px);
+        }
+
+        .wtd-page .wtd-button:focus-visible,
+        .wtd-page nav a:focus-visible {
+            outline: 2px solid #7dd3fc;
+            outline-offset: 3px;
+        }
+
+        .wtd-page .steps {
+            color: #d6e5f5;
+            line-height: 1.8;
+            margin-top: 18px;
+            padding: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .wtd-page .steps:empty {
+            display: none;
+        }
+
+        .wtd-page .steps ul,
+        .wtd-page .steps ol {
+            padding-left: 22px;
+        }
+
+        .wtd-page .steps li {
+            margin-bottom: 9px;
+        }
+
+        .wtd-page footer {
+            text-align: center;
+            padding: 23px 15px;
+            background: #081321;
+            border-top: 1px solid #20344d;
+            color: #91a6bf;
+        }
+
+        @media (max-width: 600px) {
+            .wtd-page .wtd-card {
+                padding: 21px;
+            }
+
+            .wtd-page .wtd-hero {
+                padding-top: 38px;
+            }
+
+            .wtd-page nav {
+                gap: 5px;
+            }
+
+            .wtd-page nav a {
+                padding: 8px 9px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wtd-page *,
+            .wtd-page *::before,
+            .wtd-page *::after {
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="wtd-page">
 
-    <!-- Header -->
     <header>
         <h1>Cyber Shield</h1>
         <p>What To Do During a Cyber Incident</p>
     </header>
 
-    <!-- Navigation -->
-    <nav>
+    <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="cyber-threats.html">Cyber Threats</a>
         <a href="safety-guide.html">Safety Guide</a>
+        <a href="ip-checker.html">IP Checker</a>
         <a href="scam-checker.html">Scam Checker</a>
-        <a href="what-to-do.html">What To Do?</a>
-        <a href="#">Cyber Quiz</a>
-        <a href="#">Report / Feedback</a>
-        <a href="login.html">Login</a>
-        <a href="signup.html">Sign Up</a>
+        <a href="what-to-do.html" aria-current="page">What To Do?</a>
+        <a href="cyber-quiz.html">Cyber Quiz</a>
+        <a href="report-feedback.html">Report / Feedback</a>
+        <a href="login-register.html">Login / Register</a>
     </nav>
 
-    <!-- Main Content -->
     <main>
-
-        <section>
-            <h2>🚨 What To Do?</h2>
-
+        <section class="wtd-hero">
+            <span class="wtd-tag">YOUR CYBER SAFETY ACTION PLAN</span>
+            <h2>🚨 What To Do During a Cyber Incident?</h2>
             <p>
-                If you face a cyber incident, stay calm and follow the
-                appropriate safety steps below.
+                Online fraud or a compromised account can be stressful.
+                Stay calm, protect your information, and follow the steps
+                for the situation you are facing.
             </p>
         </section>
 
-        <!-- Emergency Cyber Help -->
-        <section class="features">
+        <div class="wtd-notice">
+            <strong>⚠️ Important:</strong>
+            If money has been lost through cyber fraud in India, contact
+            your bank or payment provider immediately and report it through
+            the official National Cyber Crime Reporting Portal at
+            <a href="https://cybercrime.gov.in/"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="color:#7dd3fc;">cybercrime.gov.in</a>.
+            You can also call <strong>1930</strong> for financial cyber fraud.
+        </div>
 
-            <div class="card">
-                <h3>🔐 Account Hacked</h3>
+        <section class="wtd-grid" aria-label="Cyber incident response guides">
 
-                <p>
-                    Change your password immediately and enable
-                    two-factor authentication.
-                </p>
-
-                <button onclick="showSteps('account')">
+            <article class="wtd-card">
+                <div class="wtd-icon">🔐</div>
+                <h3>Account Hacked</h3>
+                <p>Someone may have accessed your email, social media, or another online account.</p>
+                <button class="wtd-button" type="button" onclick="showSteps('account')">
                     View Steps
                 </button>
+                <div id="account" class="steps" aria-live="polite"></div>
+            </article>
 
-                <div id="account" class="steps"></div>
-            </div>
-
-
-            <div class="card">
-                <h3>💳 Online Payment Fraud</h3>
-
-                <p>
-                    If you notice an unauthorized transaction,
-                    contact your bank or payment service immediately.
-                </p>
-
-                <button onclick="showSteps('payment')">
+            <article class="wtd-card">
+                <div class="wtd-icon">💳</div>
+                <h3>Online Payment Fraud</h3>
+                <p>You notice an unauthorized payment or suspect a UPI or banking scam.</p>
+                <button class="wtd-button" type="button" onclick="showSteps('payment')">
                     View Steps
                 </button>
+                <div id="payment" class="steps" aria-live="polite"></div>
+            </article>
 
-                <div id="payment" class="steps"></div>
-            </div>
-
-
-            <div class="card">
-                <h3>🎣 Phishing Link Clicked</h3>
-
-                <p>
-                    If you clicked a suspicious link, avoid entering
-                    sensitive information and secure your accounts.
-                </p>
-
-                <button onclick="showSteps('phishing')">
+            <article class="wtd-card">
+                <div class="wtd-icon">🎣</div>
+                <h3>Phishing Link Clicked</h3>
+                <p>You opened a suspicious link or entered information on an unfamiliar website.</p>
+                <button class="wtd-button" type="button" onclick="showSteps('phishing')">
                     View Steps
                 </button>
+                <div id="phishing" class="steps" aria-live="polite"></div>
+            </article>
 
-                <div id="phishing" class="steps"></div>
-            </div>
-
-
-            <div class="card">
-                <h3>📱 Phone Lost</h3>
-
-                <p>
-                    Secure your accounts and contact your mobile
-                    service provider if your phone is lost.
-                </p>
-
-                <button onclick="showSteps('phone')">
+            <article class="wtd-card">
+                <div class="wtd-icon">📱</div>
+                <h3>Phone Lost</h3>
+                <p>Your phone is missing and you need to protect your accounts and personal data.</p>
+                <button class="wtd-button" type="button" onclick="showSteps('phone')">
                     View Steps
                 </button>
+                <div id="phone" class="steps" aria-live="polite"></div>
+            </article>
 
-                <div id="phone" class="steps"></div>
-            </div>
-
-
-            <div class="card">
-                <h3>🪪 Personal Information Misused</h3>
-
-                <p>
-                    Secure affected accounts and report suspicious
-                    activity through appropriate official channels.
-                </p>
-
-                <button onclick="showSteps('identity')">
+            <article class="wtd-card">
+                <div class="wtd-icon">🪪</div>
+                <h3>Personal Information Misused</h3>
+                <p>Your personal details may have been used without your permission.</p>
+                <button class="wtd-button" type="button" onclick="showSteps('identity')">
                     View Steps
                 </button>
-
-                <div id="identity" class="steps"></div>
-            </div>
+                <div id="identity" class="steps" aria-live="polite"></div>
+            </article>
 
         </section>
-
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>© 2026 Cyber Shield | Cyber Safety Awareness Project</p>
     </footer>
@@ -136,5 +342,5 @@
     <script src="what-to-do.js"></script>
 
 </body>
-
 </html>
+```
