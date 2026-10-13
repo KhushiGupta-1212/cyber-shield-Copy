@@ -1,106 +1,597 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Cyber Threats - Cyber Shield</title>
+    <title>Cyber Threats | Cyber Shield</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .ct-page {
+            --ct-bg: #071225;
+            --ct-panel: #101f38;
+            --ct-border: #253b59;
+            --ct-blue: #64b5ff;
+            --ct-text: #edf4ff;
+            --ct-muted: #afc0d8;
+            min-height: 100vh;
+            background: var(--ct-bg);
+            color: var(--ct-text);
+            font-family: Arial, sans-serif;
+        }
+
+        .ct-page * { box-sizing: border-box; }
+
+        .ct-container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        .ct-nav {
+            background: #09172b;
+            border-bottom: 1px solid var(--ct-border);
+        }
+
+        .ct-nav-inner {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .ct-brand {
+            color: white;
+            font-size: 22px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .ct-brand span { color: var(--ct-blue); }
+
+        .ct-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 17px;
+        }
+
+        .ct-nav-links a {
+            color: var(--ct-muted);
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .ct-nav-links a:hover,
+        .ct-nav-links a[aria-current="page"] {
+            color: var(--ct-blue);
+        }
+
+        .ct-hero {
+            padding: 72px 0 58px;
+            background:
+                radial-gradient(ellipse at 85% 20%,
+                rgba(42, 113, 225, .25), transparent 45%),
+                linear-gradient(135deg, #0d2040, #071225 72%);
+        }
+
+        .ct-hero-grid {
+            display: grid;
+            grid-template-columns: 1.4fr .6fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .ct-badge {
+            display: inline-block;
+            padding: 8px 13px;
+            border: 1px solid #355d8c;
+            border-radius: 30px;
+            background: rgba(75, 153, 255, .1);
+            color: #a8d5ff;
+            font-size: 12px;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .ct-hero h1 {
+            margin: 22px 0 16px;
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.12;
+            color: white;
+        }
+
+        .ct-hero h1 span { color: var(--ct-blue); }
+
+        .ct-hero p {
+            max-width: 650px;
+            color: var(--ct-muted);
+            line-height: 1.9;
+            font-size: 16px;
+        }
+
+        .ct-hero-art {
+            width: 180px;
+            height: 180px;
+            display: grid;
+            place-items: center;
+            margin: auto;
+            border: 1px solid #355987;
+            border-radius: 40px;
+            background: linear-gradient(145deg, #193a64, #0b1930);
+            box-shadow: 0 0 60px rgba(57, 137, 245, .18);
+            font-size: 82px;
+        }
+
+        .ct-main { padding: 48px 0 60px; }
+
+        .ct-heading { margin-bottom: 25px; }
+
+        .ct-heading h2 {
+            margin: 0 0 10px;
+            color: white;
+            font-size: clamp(25px, 4vw, 34px);
+        }
+
+        .ct-heading p {
+            color: var(--ct-muted);
+            line-height: 1.8;
+        }
+
+        .ct-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .ct-card {
+            align-self: start;
+            padding: 24px;
+            border: 1px solid var(--ct-border);
+            border-radius: 17px;
+            background: linear-gradient(145deg, #122440, #0c192e);
+            transition: transform .25s ease, border-color .25s ease,
+                        box-shadow .25s ease;
+        }
+
+        .ct-card:hover,
+        .ct-card:focus-within {
+            transform: translateY(-7px);
+            border-color: #529df0;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, .22),
+                        0 0 18px rgba(65, 145, 245, .09);
+        }
+
+        .ct-icon {
+            width: 55px;
+            height: 55px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: #1a3558;
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+
+        .ct-card h3 {
+            margin: 0 0 12px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .ct-short {
+            min-height: 75px;
+            margin: 0;
+            color: var(--ct-muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .ct-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 19px;
+            padding: 10px 14px;
+            border: 1px solid #3d6798;
+            border-radius: 8px;
+            background: #152c4a;
+            color: #a9d5ff;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .ct-view:hover { background: #234b78; }
+
+        .ct-view:focus-visible,
+        .ct-nav a:focus-visible {
+            outline: 2px solid #8ac8ff;
+            outline-offset: 4px;
+        }
+
+        .ct-details {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid var(--ct-border);
+        }
+
+        .ct-details[hidden] { display: none; }
+
+        .ct-details h4 {
+            margin: 15px 0 7px;
+            color: #86c5ff;
+            font-size: 14px;
+        }
+
+        .ct-details h4:first-child { margin-top: 0; }
+
+        .ct-details p {
+            margin: 0;
+            color: var(--ct-muted);
+            font-size: 13px;
+            line-height: 1.85;
+        }
+
+        .ct-bottom {
+            margin-top: 38px;
+            padding: 28px;
+            border: 1px solid var(--ct-border);
+            border-radius: 16px;
+            background: linear-gradient(135deg, #122b49, #101d32);
+        }
+
+        .ct-bottom h2 {
+            margin-top: 0;
+            color: white;
+        }
+
+        .ct-bottom p {
+            color: var(--ct-muted);
+            line-height: 1.8;
+        }
+
+        .ct-action {
+            display: inline-block;
+            margin: 8px 10px 0 0;
+            padding: 12px 17px;
+            border-radius: 8px;
+            background: #3988ed;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .ct-action:hover { background: #226ed0; }
+
+        .ct-footer {
+            padding: 25px 0;
+            border-top: 1px solid var(--ct-border);
+            color: #91a6c2;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 800px) {
+            .ct-hero-grid { grid-template-columns: 1fr; }
+            .ct-hero-art {
+                width: 135px;
+                height: 135px;
+                border-radius: 30px;
+                font-size: 65px;
+            }
+            .ct-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 540px) {
+            .ct-grid { grid-template-columns: 1fr; }
+            .ct-hero { padding-top: 45px; }
+            .ct-card { padding: 21px; }
+            .ct-short { min-height: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ct-card, .ct-view { transition: none; }
+            .ct-card:hover { transform: none; }
+        }
+    </style>
 </head>
 
 <body>
+<div class="ct-page">
 
-    <!-- Header -->
-    <header>
-        <h1>Cyber Shield</h1>
-        <p>Understand Cyber Threats. Stay Protected.</p>
-    </header>
+    <nav class="ct-nav">
+        <div class="ct-container ct-nav-inner">
+            <a class="ct-brand" href="index.html">
+                🛡️ Cyber<span>Shield</span>
+            </a>
 
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="cyber-threats.html">Cyber Threats</a>
-        <a href="safety-guide.html">Safety Guide</a>
-        <a href="#">Scam Checker</a>
-        <a href="#">What To Do?</a>
-        <a href="#">Cyber Quiz</a>
-        <a href="#">Report / Feedback</a>
+            <div class="ct-nav-links">
+                <a href="index.html">Home</a>
+                <a href="cyber-threats.html" aria-current="page">Cyber Threats</a>
+                <a href="safety-guide.html">Safety Guide</a>
+                <a href="scam-checker.html">Scam Checker</a>
+                <a href="what-to-do.html">What To Do?</a>
+                <a href="cyber-quiz.html">Cyber Quiz</a>
+                <a href="report-feedback.html">Report / Feedback</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Main Content -->
-    <main>
+    <header class="ct-hero">
+        <div class="ct-container ct-hero-grid">
+            <div>
+                <span class="ct-badge">KNOW THE RISK · STAY PROTECTED</span>
+
+                <h1>
+                    Understand the Threats.<br>
+                    <span>Protect Your Digital World.</span>
+                </h1>
+
+                <p>
+                    Learn how common cyber threats work, recognize
+                    warning signs and discover practical ways to protect
+                    your accounts, devices and personal information.
+                </p>
+            </div>
+
+            <div class="ct-hero-art" aria-hidden="true">🛡️</div>
+        </div>
+    </header>
+
+    <main class="ct-container ct-main">
 
         <section>
-            <h2>Common Cyber Threats</h2>
+            <div class="ct-heading">
+                <h2>Explore Common Cyber Threats</h2>
+                <p>
+                    Select “View Details” to learn an example and how
+                    to protect yourself from each threat.
+                </p>
+            </div>
 
-            <p>
-                Cyber threats are online activities that can harm your
-                device, accounts, personal information or money.
-                Learn how they work so you can recognize and avoid them.
-            </p>
+            <div class="ct-grid">
+
+                <article class="ct-card">
+                    <div class="ct-icon">🎣</div>
+                    <h3>Phishing</h3>
+                    <p class="ct-short">
+                        Fraudulent messages or websites that try to steal
+                        passwords, OTPs or personal information.
+                    </p>
+                    <button class="ct-view" type="button"
+                        aria-expanded="false" aria-controls="ct-phishing">
+                        View Details <span aria-hidden="true">→</span>
+                    </button>
+                    <div class="ct-details" id="ct-phishing" hidden>
+                        <h4>What is it?</h4>
+                        <p>
+                            Attackers pretend to be a trusted person or
+                            organization to trick people into revealing
+                            confidential information.
+                        </p>
+                        <h4>Example</h4>
+                        <p>
+                            An unexpected message claims your bank account
+                            will be blocked unless you click a link.
+                        </p>
+                        <h4>How to stay safe</h4>
+                        <p>
+                            Do not click unexpected links. Contact the
+                            organization using its official website or app.
+                            Never share an OTP or password.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="ct-card">
+                    <div class="ct-icon">💳</div>
+                    <h3>Online Scams</h3>
+                    <p class="ct-short">
+                        Fake prizes, job offers, shopping deals and payment
+                        requests designed to deceive people.
+                    </p>
+                    <button class="ct-view" type="button"
+                        aria-expanded="false" aria-controls="ct-scams">
+                        View Details <span aria-hidden="true">→</span>
+                    </button>
+                    <div class="ct-details" id="ct-scams" hidden>
+                        <h4>What is it?</h4>
+                        <p>
+                            A scam uses deception to obtain money,
+                            personal information or access to an account.
+                        </p>
+                        <h4>Example</h4>
+                        <p>
+                            A stranger promises a prize but asks you to
+                            pay a fee before receiving it.
+                        </p>
+                        <h4>How to stay safe</h4>
+                        <p>
+                            Verify offers independently. Do not pay
+                            unexpected fees or send money under pressure.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="ct-card">
+                    <div class="ct-icon">🦠</div>
+                    <h3>Malware</h3>
+                    <p class="ct-short">
+                        Harmful software that may damage a device,
+                        steal information or enable unauthorized access.
+                    </p>
+                    <button class="ct-view" type="button"
+                        aria-expanded="false" aria-controls="ct-malware">
+                        View Details <span aria-hidden="true">→</span>
+                    </button>
+                    <div class="ct-details" id="ct-malware" hidden>
+                        <h4>What is it?</h4>
+                        <p>
+                            Malware is software designed to perform
+                            harmful or unauthorized actions.
+                        </p>
+                        <h4>Example</h4>
+                        <p>
+                            An untrusted download installs a program
+                            that secretly collects information.
+                        </p>
+                        <h4>How to stay safe</h4>
+                        <p>
+                            Download apps from trusted sources, update
+                            your device and avoid unknown attachments.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="ct-card">
+                    <div class="ct-icon">🔑</div>
+                    <h3>Identity Theft</h3>
+                    <p class="ct-short">
+                        The misuse of someone's personal details
+                        to impersonate them or commit fraud.
+                    </p>
+                    <button class="ct-view" type="button"
+                        aria-expanded="false" aria-controls="ct-identity">
+                        View Details <span aria-hidden="true">→</span>
+                    </button>
+                    <div class="ct-details" id="ct-identity" hidden>
+                        <h4>What is it?</h4>
+                        <p>
+                            Someone obtains and misuses another person's
+                            identifying information without permission.
+                        </p>
+                        <h4>Example</h4>
+                        <p>
+                            A criminal uses stolen personal details
+                            to impersonate someone online.
+                        </p>
+                        <h4>How to stay safe</h4>
+                        <p>
+                            Share personal documents carefully, use
+                            account security features and monitor
+                            unexpected account activity.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="ct-card">
+                    <div class="ct-icon">🌐</div>
+                    <h3>Fake Websites</h3>
+                    <p class="ct-short">
+                        Websites that imitate legitimate services
+                        to collect information or payments.
+                    </p>
+                    <button class="ct-view" type="button"
+                        aria-expanded="false" aria-controls="ct-websites">
+                        View Details <span aria-hidden="true">→</span>
+                    </button>
+                    <div class="ct-details" id="ct-websites" hidden>
+                        <h4>What is it?</h4>
+                        <p>
+                            A deceptive website may copy a real brand's
+                            appearance while using a misleading address.
+                        </p>
+                        <h4>Example</h4>
+                        <p>
+                            A fake shopping site advertises unusually
+                            cheap products and requests advance payment.
+                        </p>
+                        <h4>How to stay safe</h4>
+                        <p>
+                            Check the complete web address, verify the
+                            seller and remember that HTTPS alone does
+                            not prove a site is legitimate.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="ct-card">
+                    <div class="ct-icon">🎭</div>
+                    <h3>Social Engineering</h3>
+                    <p class="ct-short">
+                        Manipulating people through trust, fear or urgency
+                        to make them disclose information or take action.
+                    </p>
+                    <button class="ct-view" type="button"
+                        aria-expanded="false" aria-controls="ct-social">
+                        View Details <span aria-hidden="true">→</span>
+                    </button>
+                    <div class="ct-details" id="ct-social" hidden>
+                        <h4>What is it?</h4>
+                        <p>
+                            An attacker exploits human trust or emotions
+                            rather than relying only on technical methods.
+                        </p>
+                        <h4>Example</h4>
+                        <p>
+                            Someone pretends to be technical support
+                            and asks for remote access to your device.
+                        </p>
+                        <h4>How to stay safe</h4>
+                        <p>
+                            Pause before acting, verify the person's
+                            identity through a trusted channel and
+                            never grant unexpected access.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
         </section>
 
-        <!-- Threat Cards -->
-        <section class="features">
-
-            <div class="card">
-                <h3>🎣 Phishing</h3>
-                <p>
-                    Fake emails, messages or websites designed to trick
-                    users into revealing passwords, OTPs or personal information.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>💳 Online Scams</h3>
-                <p>
-                    Fraudulent offers, fake prizes, fake jobs or payment
-                    requests designed to steal money or information.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>🦠 Malware</h3>
-                <p>
-                    Malicious software that can damage devices, steal data
-                    or allow unauthorized access.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>🔑 Identity Theft</h3>
-                <p>
-                    When someone misuses another person's personal
-                    information for fraudulent activities.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>🌐 Fake Websites</h3>
-                <p>
-                    Websites created to look legitimate but are designed
-                    to collect sensitive information or money.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>🎭 Social Engineering</h3>
-                <p>
-                    Manipulating people through trust, fear or urgency
-                    to make them reveal information or perform an action.
-                </p>
-            </div>
-
+        <section class="ct-bottom">
+            <h2>🛡️ Learn How to Protect Yourself</h2>
+            <p>
+                Recognizing threats is the first step. Build safer
+                habits and learn what to do when something seems suspicious.
+            </p>
+            <a class="ct-action" href="safety-guide.html">
+                Explore Safety Guide →
+            </a>
+            <a class="ct-action" href="scam-checker.html">
+                Try Scam Checker →
+            </a>
+            <a class="ct-action" href="what-to-do.html">
+                What To Do? →
+            </a>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Cyber Shield | Cyber Safety Awareness Project</p>
+    <footer class="ct-footer">
+        <div class="ct-container">
+            <strong>🛡️ Cyber Shield</strong>
+            <p>Think Before You Click. Protect What Matters.</p>
+            <p>© 2026 Cyber Shield | Cyber Safety Awareness Project</p>
+        </div>
     </footer>
 
-</body>
+</div>
 
+<script>
+    const ctButtons = document.querySelectorAll('.ct-view');
+
+    ctButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const detailsId = button.getAttribute('aria-controls');
+            const details = document.getElementById(detailsId);
+            const isOpening = details.hidden;
+
+            details.hidden = !isOpening;
+            button.setAttribute('aria-expanded', String(isOpening));
+            button.innerHTML = isOpening
+                ? 'Hide Details <span aria-hidden="true">↑</span>'
+                : 'View Details <span aria-hidden="true">→</span>';
+        });
+    });
+</script>
+
+</body>
 </html>
