@@ -1,57 +1,687 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Safety Guide - Cyber Shield</title>
+    <title>Safety Guide | Cyber Shield</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .sg-page {
+            --sg-bg: #071225;
+            --sg-panel: #101f38;
+            --sg-border: #243956;
+            --sg-blue: #56a8ff;
+            --sg-text: #edf4ff;
+            --sg-muted: #afc0d8;
+            background: var(--sg-bg);
+            color: var(--sg-text);
+            min-height: 100vh;
+            padding-bottom: 60px;
+            font-family: Arial, sans-serif;
+        }
+
+        .sg-page * {
+            box-sizing: border-box;
+        }
+
+        .sg-container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        .sg-nav {
+            border-bottom: 1px solid var(--sg-border);
+            background: #09172b;
+        }
+
+        .sg-nav-inner {
+            min-height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .sg-brand {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .sg-brand span {
+            color: var(--sg-blue);
+        }
+
+        .sg-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .sg-links a {
+            color: var(--sg-muted);
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .sg-links a:hover,
+        .sg-links a[aria-current="page"] {
+            color: var(--sg-blue);
+        }
+
+        .sg-hero {
+            padding: 76px 0 56px;
+            background:
+                radial-gradient(ellipse at 80% 20%,
+                rgba(43, 111, 218, .24), transparent 48%),
+                linear-gradient(140deg, #0b1c36, #071225 72%);
+        }
+
+        .sg-hero-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 0.7fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .sg-label {
+            display: inline-block;
+            padding: 8px 13px;
+            border: 1px solid #315888;
+            border-radius: 30px;
+            background: rgba(57, 133, 231, .12);
+            color: #9bcaff;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .sg-hero h1 {
+            margin: 22px 0 16px;
+            color: #fff;
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.12;
+        }
+
+        .sg-hero h1 span {
+            color: var(--sg-blue);
+        }
+
+        .sg-hero p {
+            max-width: 620px;
+            color: var(--sg-muted);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .sg-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 13px 21px;
+            border-radius: 9px;
+            background: #3988ed;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        .sg-button:hover {
+            background: #226ed0;
+            transform: translateY(-2px);
+        }
+
+        .sg-shield {
+            width: 190px;
+            height: 190px;
+            display: grid;
+            place-items: center;
+            margin: auto;
+            border: 1px solid #345987;
+            border-radius: 42px;
+            background: linear-gradient(145deg, #18375f, #0b1930);
+            box-shadow: 0 0 65px rgba(55, 137, 245, .17);
+            font-size: 90px;
+        }
+
+        .sg-section {
+            padding: 48px 0 10px;
+            scroll-margin-top: 20px;
+        }
+
+        .sg-section-heading {
+            margin-bottom: 26px;
+        }
+
+        .sg-section-heading h2 {
+            margin: 0 0 10px;
+            color: #fff;
+            font-size: clamp(25px, 4vw, 34px);
+        }
+
+        .sg-section-heading p {
+            color: var(--sg-muted);
+            line-height: 1.7;
+        }
+
+        .sg-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .sg-card {
+            padding: 25px;
+            border: 1px solid var(--sg-border);
+            border-radius: 16px;
+            background: linear-gradient(145deg,
+                #122440, #0c192e);
+            transition: transform .2s, border-color .2s;
+        }
+
+        .sg-card:hover {
+            transform: translateY(-5px);
+            border-color: #438ce0;
+        }
+
+        .sg-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 18px;
+            border-radius: 14px;
+            background: #1a3558;
+            font-size: 26px;
+        }
+
+        .sg-card h3 {
+            margin: 0 0 12px;
+            color: #fff;
+            font-size: 19px;
+        }
+
+        .sg-card p {
+            margin: 0;
+            color: var(--sg-muted);
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        .sg-tag {
+            display: inline-block;
+            margin-top: 17px;
+            color: #82c0ff;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .sg-practices {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .sg-practice {
+            padding: 25px;
+            border: 1px solid var(--sg-border);
+            border-radius: 16px;
+            background: var(--sg-panel);
+        }
+
+        .sg-practice h3 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .sg-practice ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .sg-practice li {
+            padding: 7px 0;
+            color: var(--sg-muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .sg-good h3 { color: #7ee0b1; }
+        .sg-bad h3 { color: #ff9caa; }
+
+        .sg-checklist {
+            padding: 27px;
+            border: 1px solid var(--sg-border);
+            border-radius: 16px;
+            background: linear-gradient(145deg,
+                #122440, #0c192e);
+        }
+
+        .sg-progress-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+            color: var(--sg-muted);
+            font-size: 14px;
+        }
+
+        .sg-progress-track {
+            height: 9px;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #263954;
+            margin-bottom: 22px;
+        }
+
+        .sg-progress-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #3988ed, #69e0c0);
+            transition: width .25s;
+        }
+
+        .sg-check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--sg-border);
+            color: var(--sg-muted);
+            line-height: 1.7;
+            cursor: pointer;
+        }
+
+        .sg-check-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .sg-check-item input {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px;
+            flex-shrink: 0;
+            accent-color: #56a8ff;
+            cursor: pointer;
+        }
+
+        .sg-check-item:has(input:checked) span {
+            color: #8fe0ba;
+        }
+
+        .sg-reset {
+            margin-top: 18px;
+            padding: 10px 15px;
+            border: 1px solid #41628b;
+            border-radius: 8px;
+            background: transparent;
+            color: #d9e9ff;
+            cursor: pointer;
+        }
+
+        .sg-reset:hover {
+            background: #1a3558;
+        }
+
+        .sg-footer {
+            margin-top: 55px;
+            padding: 25px 0;
+            border-top: 1px solid var(--sg-border);
+            color: #91a6c2;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 800px) {
+            .sg-hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sg-shield {
+                width: 135px;
+                height: 135px;
+                border-radius: 30px;
+                font-size: 65px;
+            }
+
+            .sg-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 540px) {
+            .sg-nav-inner {
+                align-items: flex-start;
+            }
+
+            .sg-links {
+                gap: 12px;
+            }
+
+            .sg-hero {
+                padding-top: 48px;
+            }
+
+            .sg-cards,
+            .sg-practices {
+                grid-template-columns: 1fr;
+            }
+
+            .sg-card,
+            .sg-practice,
+            .sg-checklist {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+<div class="sg-page">
 
-    <h1>Cyber Safety Guide</h1>
+    <nav class="sg-nav">
+        <div class="sg-container sg-nav-inner">
+            <a class="sg-brand" href="index.html">
+                🛡️ Cyber<span>Shield</span>
+            </a>
 
-<p>
-    Learn simple and practical ways to stay safe online.
-</p>
+            <div class="sg-links">
+                <a href="index.html">Home</a>
+                <a href="cyber-threats.html">Cyber Threats</a>
+                <a href="safety-guide.html" aria-current="page">Safety Guide</a>
+                <a href="scam-checker.html">Scam Checker</a>
+                <a href="what-to-do.html">What To Do?</a>
+                <a href="cyber-quiz.html">Cyber Quiz</a>
+            </div>
+        </div>
+    </nav>
 
-<section class="safety-cards">
+    <header class="sg-hero">
+        <div class="sg-container sg-hero-grid">
+            <div>
+                <span class="sg-label">YOUR DIGITAL SAFETY CENTER</span>
 
-    <div class="card">
-        <h2>🔐 Strong Passwords</h2>
-        <p>
-            Use strong and unique passwords for your important accounts.
-            Avoid using simple passwords or the same password everywhere.
-        </p>
-    </div>
+                <h1>
+                    Stay Smart.<br>
+                    Stay Safe.<br>
+                    <span>Stay Protected.</span>
+                </h1>
 
-    <div class="card">
-        <h2>📱 Account Security</h2>
-        <p>
-            Enable two-factor authentication and keep your account
-            recovery information updated.
-        </p>
-    </div>
+                <p>
+                    The internet makes life easier, but staying safe
+                    online takes awareness. Learn how to protect your
+                    accounts, recognize scams and keep your personal
+                    information secure.
+                </p>
 
-    <div class="card">
-        <h2>🎣 Phishing Protection</h2>
-        <p>
-            Do not click suspicious links or share passwords, OTPs
-            or sensitive information with unknown people.
-        </p>
-    </div>
+                <a class="sg-button" href="#sg-tips">
+                    Explore Safety Tips →
+                </a>
+            </div>
 
-    <div class="card">
-        <h2>🌐 Safe Browsing</h2>
-        <p>
-            Use trusted websites, check website addresses carefully
-            and avoid downloading files from unknown sources.
-        </p>
-    </div>
+            <div class="sg-shield" aria-label="Shield illustration"
+                 role="img">
+                🛡️
+            </div>
+        </div>
+    </header>
 
-</section>
+    <main class="sg-container">
+
+        <section class="sg-section" id="sg-tips">
+            <div class="sg-section-heading">
+                <h2>Essential Cyber Safety Tips</h2>
+                <p>
+                    Six important habits to make your digital life safer.
+                </p>
+            </div>
+
+            <div class="sg-cards">
+
+                <article class="sg-card">
+                    <div class="sg-icon">🔐</div>
+                    <h3>Strong Passwords</h3>
+                    <p>
+                        Use long, unique passwords for different accounts.
+                        Consider a trusted password manager and never
+                        reuse your main password everywhere.
+                    </p>
+                    <span class="sg-tag">ACCOUNT PROTECTION</span>
+                </article>
+
+                <article class="sg-card">
+                    <div class="sg-icon">🔑</div>
+                    <h3>Two-Factor Authentication</h3>
+                    <p>
+                        Enable two-factor authentication wherever available.
+                        Never share your OTP, recovery codes or login
+                        approval requests with anyone.
+                    </p>
+                    <span class="sg-tag">EXTRA SECURITY</span>
+                </article>
+
+                <article class="sg-card">
+                    <div class="sg-icon">🎣</div>
+                    <h3>Phishing Awareness</h3>
+                    <p>
+                        Be careful with unexpected messages, urgent warnings
+                        and prize offers. Verify the sender independently
+                        before opening links or attachments.
+                    </p>
+                    <span class="sg-tag">SCAM PREVENTION</span>
+                </article>
+
+                <article class="sg-card">
+                    <div class="sg-icon">🌐</div>
+                    <h3>Safe Browsing</h3>
+                    <p>
+                        Check website addresses carefully. HTTPS helps
+                        protect the connection, but does not guarantee
+                        that a website itself is trustworthy.
+                    </p>
+                    <span class="sg-tag">BROWSE WISELY</span>
+                </article>
+
+                <article class="sg-card">
+                    <div class="sg-icon">📱</div>
+                    <h3>Privacy & Social Media</h3>
+                    <p>
+                        Limit who can see your posts and personal details.
+                        Review app permissions and avoid sharing your
+                        location or private information publicly.
+                    </p>
+                    <span class="sg-tag">PRIVACY FIRST</span>
+                </article>
+
+                <article class="sg-card">
+                    <div class="sg-icon">🔄</div>
+                    <h3>Updates & Downloads</h3>
+                    <p>
+                        Keep your operating system, browser and apps
+                        updated. Download software from official sources
+                        and avoid unknown files or cracked applications.
+                    </p>
+                    <span class="sg-tag">DEVICE SECURITY</span>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="sg-section">
+            <div class="sg-section-heading">
+                <h2>Do's & Don'ts Online</h2>
+                <p>
+                    Simple choices can help prevent common cyber threats.
+                </p>
+            </div>
+
+            <div class="sg-practices">
+                <article class="sg-practice sg-good">
+                    <h3>✓ Do This</h3>
+                    <ul>
+                        <li>Verify suspicious messages using official contact details.</li>
+                        <li>Use unique passwords and enable two-factor authentication.</li>
+                        <li>Back up important files regularly.</li>
+                        <li>Report suspicious accounts, messages or transactions.</li>
+                        <li>Ask a trusted adult or qualified professional for help when needed.</li>
+                    </ul>
+                </article>
+
+                <article class="sg-practice sg-bad">
+                    <h3>✕ Avoid This</h3>
+                    <ul>
+                        <li>Never share passwords, OTPs or recovery codes.</li>
+                        <li>Do not trust links just because a message looks official.</li>
+                        <li>Avoid unknown downloads and unverified apps.</li>
+                        <li>Do not send money because someone creates panic or urgency.</li>
+                        <li>Do not assume a website is safe just because it uses HTTPS.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="sg-section" id="sg-checklist">
+            <div class="sg-section-heading">
+                <h2>Your Personal Safety Checklist</h2>
+                <p>
+                    Mark the actions you have completed and track your
+                    progress on this device.
+                </p>
+            </div>
+
+            <div class="sg-checklist">
+                <div class="sg-progress-top">
+                    <span>Security progress</span>
+                    <strong id="sg-progress-text">0 of 6 completed</strong>
+                </div>
+
+                <div class="sg-progress-track"
+                     role="progressbar"
+                     aria-label="Safety checklist progress"
+                     aria-valuemin="0"
+                     aria-valuemax="6"
+                     aria-valuenow="0"
+                     id="sg-progress-bar">
+                    <div class="sg-progress-fill"
+                         id="sg-progress-fill"></div>
+                </div>
+
+                <label class="sg-check-item">
+                    <input type="checkbox">
+                    <span>I use strong, unique passwords for important accounts.</span>
+                </label>
+
+                <label class="sg-check-item">
+                    <input type="checkbox">
+                    <span>I have enabled two-factor authentication where possible.</span>
+                </label>
+
+                <label class="sg-check-item">
+                    <input type="checkbox">
+                    <span>I know never to share my OTP or recovery codes.</span>
+                </label>
+
+                <label class="sg-check-item">
+                    <input type="checkbox">
+                    <span>I check suspicious links and verify senders independently.</span>
+                </label>
+
+                <label class="sg-check-item">
+                    <input type="checkbox">
+                    <span>My device, browser and applications are updated.</span>
+                </label>
+
+                <label class="sg-check-item">
+                    <input type="checkbox">
+                    <span>I review my privacy settings and app permissions.</span>
+                </label>
+
+                <button type="button" class="sg-reset" id="sg-reset">
+                    Reset Checklist
+                </button>
+            </div>
+        </section>
+
+        <section class="sg-section">
+            <div class="sg-practice">
+                <h3>🚨 Think You've Encountered a Scam?</h3>
+                <p style="color: var(--sg-muted); line-height: 1.8;">
+                    Stop interacting with the suspicious message. Do not
+                    share more information or send money. Contact the
+                    relevant service through its official channel. If you
+                    are in India and have experienced cyber financial fraud,
+                    report it promptly through the official cybercrime
+                    reporting portal or helpline 1930.
+                </p>
+                <a class="sg-button" href="scam-checker.html">
+                    Try Scam Checker →
+                </a>
+                <a class="sg-button" href="what-to-do.html"
+                   style="margin-left: 8px;">
+                    View Next Steps →
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="sg-footer">
+        <div class="sg-container">
+            <strong>🛡️ Cyber Shield</strong>
+            <p>Think Before You Click. Protect What Matters.</p>
+            <p>Cybersecurity awareness starts with you.</p>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    const sgCheckboxes = document.querySelectorAll(
+        '.sg-check-item input[type="checkbox"]'
+    );
+
+    const sgProgressText = document.getElementById('sg-progress-text');
+    const sgProgressFill = document.getElementById('sg-progress-fill');
+    const sgProgressBar = document.getElementById('sg-progress-bar');
+    const sgResetButton = document.getElementById('sg-reset');
+
+    function updateSafetyProgress() {
+        const completed = [...sgCheckboxes]
+            .filter(checkbox => checkbox.checked).length;
+
+        const total = sgCheckboxes.length;
+        const percentage = total ? (completed / total) * 100 : 0;
+
+        sgProgressText.textContent =
+            `${completed} of ${total} completed`;
+
+        sgProgressFill.style.width = `${percentage}%`;
+        sgProgressBar.setAttribute('aria-valuenow', completed);
+    }
+
+    sgCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateSafetyProgress);
+    });
+
+    sgResetButton.addEventListener('click', () => {
+        sgCheckboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+
+        updateSafetyProgress();
+    });
+
+    updateSafetyProgress();
+</script>
 </body>
-
 </html>
