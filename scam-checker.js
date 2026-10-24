@@ -16,7 +16,7 @@ checkScamBtn.addEventListener("click", async function () {
     resultBox.textContent = "Checking message...";
 
     try {
-        const response = await fetch("http://localhost:3000/api/scam-check", {
+       const response = await fetch("https://cyber-shield-copy.onrender.com/api/scam-check", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
